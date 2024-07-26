@@ -129,32 +129,34 @@ const App = () => {
         </button>
       </form>
 
-      <table className="w-full mt-12 border-collapse border border-gray-200 bg-white shadow-md rounded-md overflow-hidden">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="border border-gray-200 p-2">Email</th>
-            <th className="border border-gray-200 p-2">Fullname</th>
-            <th className="border border-gray-200 p-2">Phone</th>
-            <th className="border border-gray-200 p-2">Address</th>
-            <th className="border border-gray-200 p-2">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {attData.map((e) => (
-            <tr key={e.email} className="hover:bg-gray-100">
-              <td className="border border-gray-200 p-2">{e.email}</td>
-              <td className="border border-gray-200 p-2">{e.fullname}</td>
-              <td className="border border-gray-200 p-2">{e.phone}</td>
-              <td className="border border-gray-200 p-2">{e.address}</td>
-              <td className="border border-gray-200 p-2 flex gap-2 justify-center">
-                <button onClick={() => handleDelete(e.email)} className="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600">Delete</button>
-                <button onClick={() => handleUpdate(e)} className="bg-green-500 text-white py-1 px-2 rounded-md hover:bg-green-600">Update</button>
-              </td> 
+      <div className="overflow-x-auto mt-8">
+        <table className="min-w-full border-collapse border border-gray-200 bg-white shadow-md rounded-md">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-200 p-2">Email</th>
+              <th className="border border-gray-200 p-2">Fullname</th>
+              <th className="border border-gray-200 p-2">Phone</th>
+              <th className="border border-gray-200 p-2">Address</th>
+              <th className="border border-gray-200 p-2">Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <button onClick={handleDeleteAll} className="w-[78rem] bg-blue-600 font-bold text-white py-2 px-4 mt-4 rounded-md hover:bg-red-600">Delete All</button>  
+          </thead>
+          <tbody>
+            {attData.map((e) => (
+              <tr key={e.email} className="hover:bg-gray-100">
+                <td className="border border-gray-200 p-2">{e.email}</td>
+                <td className="border border-gray-200 p-2">{e.fullname}</td>
+                <td className="border border-gray-200 p-2">{e.phone}</td>
+                <td className="border border-gray-200 p-2">{e.address}</td>
+                <td className="border border-gray-200 p-2 flex flex-col sm:flex-row gap-2 justify-center">
+                  <button onClick={() => handleDelete(e.email)} className="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600">Delete</button>
+                  <button onClick={() => handleUpdate(e)} className="bg-green-500 text-white py-1 px-2 rounded-md hover:bg-green-600">Update</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <button onClick={handleDeleteAll} className="bg-red-600 text-white py-2 px-4 mt-4 rounded-md hover:bg-red-700">Delete All</button>
     </div>
   );
 };
